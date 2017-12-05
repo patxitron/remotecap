@@ -50,8 +50,14 @@ build/%.o: src/%.cpp build/%.d
 	$(CXX) $(DEPFLAGS) $(CXXFLAGS) -c $< -o $@
 	@mv -f build/$*.Td build/$*.d && touch $@
 
-$(TARGET): $(PROJECT_DIR)/zwo/efw/lib/x64/libEFWFilter.a $(PROJECT_DIR)/zwo/asi/lib/x64/libASICamera2.a $(PROJECT_DIR)/beast/include/boost/beast.hpp $(OBJS)
+$(TARGET): $(PROJECT_DIR)/zwo/efw/lib/x64/libEFWFilter.a $(PROJECT_DIR)/zwo/asi/lib/x64/libASICamera2.a $(PROJECT_DIR)/beast/include/boost/beast.hpp $(PROJECT_DIR)/json/src/json.hpp $(OBJS)
 	$(CXX) -o $(TARGET) $(LDFLAGS) $(OBJS) $(LIBS)
+
+$(PROJECT_DIR)/beast/include/boost/beast.hpp:
+	$(PROJECT_DIR)/do-submodule.sh beast
+
+$(PROJECT_DIR)/json/src/json.hpp:
+	$(PROJECT_DIR)/do-submodule.sh json
 
 build/%.d: ;
 .PRECIOUS: build/%.d
