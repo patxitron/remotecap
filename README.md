@@ -10,8 +10,11 @@ In order to compile this app, it is necessary the ZWO development kit for ASI
 cameras and for filter wheels (EFW). Download them from zwo site and unpack them
 in their respective folder under zwo.
 
-It is included as dependency (and cloned automatically) boost/beast a
-http/websocket infraestructure based on boost/asio.
+It is included as dependency (and cloned automatically) [boost/beast](https://github.com/boostorg/beast),
+a header-only http/websocket infraestructure based on boost/asio.
+
+Another included dependency is [Json for modern C++](https://github.com/nlohmann/json/),
+a header-only json library.
 
 This app depends on several boost libraries (asio, system, filesystem and regex),
 libudev, libusb, cfitsio and CCfits.
